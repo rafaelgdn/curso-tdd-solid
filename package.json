@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "sucrase-node src/main/server.ts",
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "postbuild": "copyfiles -u 1 public/**/* dist/static",
