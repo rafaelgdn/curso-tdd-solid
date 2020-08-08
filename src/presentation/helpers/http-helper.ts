@@ -7,6 +7,12 @@ export const badRequest = (error: Error): HttpResponse => {
     body: error
   }
 }
+export const forbidden = (error: Error): HttpResponse => {
+  return {
+    statusCode: 403,
+    body: error
+  }
+}
 export const unauthorized = (): HttpResponse => {
   return {
     statusCode: 401,
@@ -19,7 +25,6 @@ export const serverError = (error?: Error): HttpResponse => {
     body: new ServerError(error.stack)
   }
 }
-
 export const ok = (data: any): HttpResponse => {
   return {
     statusCode: 200,
