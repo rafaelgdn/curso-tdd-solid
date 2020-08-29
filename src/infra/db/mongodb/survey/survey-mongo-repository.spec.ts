@@ -41,4 +41,11 @@ describe('Survey Mongo Repository', () => {
     const survey = await surveyCollection.findOne({ question: 'any_question' })
     expect(survey).toBeTruthy()
   })
+  test('Should load all surveys on success', async () => {
+    await surveyCollection.insertMany([makeFakeSurvey(), makeFakeSurvey()])
+    const sut = makeSut()
+    const surveys = await sut.loadAll()
+    expect(surveys.length).toBe(2)
+    expect(surveys[0].question).toBe('any_question')
+  })
 })
